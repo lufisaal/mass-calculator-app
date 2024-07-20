@@ -15,21 +15,14 @@ These were the values used for density of the materials:
 - kubectl
 - kind
 
-## info
-
-The endpoints are available for this example are:
-
-- [localhost:8080/aluminium/sphere?dimension=x](http://localhost:8080/aluminium/sphere?dimension=<radius>)
-- [localhost:8080/aluminium/sphere?dimension=y](http://localhost:8080/iron/cube?dimension=<side-length>)
-
 ## Step 1: Go Application
 
 ### Description
 
 The Go application calculates the mass of a *sphere* and a *cube* based on the provided dimensions and material density. The application listens on a configurable port and exposes two endpoints:
 
-- `/aluminium/sphere?dimension=<radius>`
-- `/iron/cube?dimension=<side-length>`
+- [localhost:8080/aluminium/sphere?dimension=x](http://localhost:8080/aluminium/sphere?dimension=<radius>)
+- [localhost:8080/aluminium/sphere?dimension=y](http://localhost:8080/iron/cube?dimension=<side-length>)
 
 #### Commands to Build the App
 
@@ -38,6 +31,7 @@ Ensure you have Go installed. To build the application, use the following comman
 ```sh
 go mod init mass_calculator_app
 go mod tidy
+# As this is a simple app we can skip the first to commands
 go build -o mass_calculator_app main.go
 ```
 
@@ -72,7 +66,7 @@ After the build command we can execute the Docker app with this command:
 docker run -d -p 8080:8080 --name mass_calculator_app mass_calculator_app:1.0.0
 ```
 
-Now we can check the endpoints for testing the application
+Now we can check the endpoints (see Step 1) for testing the application
 
 ## Step 3: Helm chart for deploying the application in a kubernetes cluster
 
@@ -84,7 +78,7 @@ For the creation of these chart it was [generate an empty Helm chart](https://he
 helm create mass_calculator_app
 helm package mass_calculator_app
 
-helm install mass_calculator_app ./mass_calculator_app-0.1.0.tgz
+helm install mass_calculator_app ./mass-calculator-app-0.1.0.tgz
 ```
 
 ## Step 4: Testing the chart
@@ -115,3 +109,4 @@ curl "http://localhost:8080/aluminium/sphere?dimension=1"
 ```
 
 These commands above must be followed in sequence, and the result should be achieved without any constraint.
+Here are some evidences:

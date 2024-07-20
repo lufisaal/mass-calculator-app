@@ -1,15 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "mass-prog.fullname" . }}
+  name: {{ include "mass-calculator-app.fullname" . }}
   labels:
-    {{- include "mass-prog.labels" . | nindent 4 }}
+    {{- include "mass-calculator-app.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
   ports:
     - port: {{ .Values.service.port }}
       targetPort: {{ .Values.service.target_port }}
   selector:
-    {{- include "mass-prog.selectorLabels" . | nindent 4 }}
-    # app.kubernetes.io/name: {{ include "mass-prog.name" . }}
-    # app.kubernetes.io/instance: {{ .Release.Name }}
+    {{- include "mass-calculator-app.selectorLabels" . | nindent 4 }}

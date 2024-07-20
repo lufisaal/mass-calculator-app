@@ -6,7 +6,7 @@ WORKDIR /src
 
 COPY ./main.go .
 
-RUN go build -o /app/mass_program main.go
+RUN go build -o /app/mass_calculator_app main.go
 
 FROM alpine:3.20 AS runner
 
@@ -15,9 +15,9 @@ RUN adduser -D -g '' go_user && \
     chown go_user:go_user /app && \
     chmod +x /app
 
-COPY --from=builder /app/mass_program /app/mass_program
+COPY --from=builder /app/mass_calculator_app /app/mass_calculator_app
 
 USER go_user
 EXPOSE 8080
 
-CMD ["/app/mass_program", "8080"]
+CMD ["/app/mass_calculator_app", "8080"]
