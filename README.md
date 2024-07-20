@@ -110,3 +110,9 @@ curl "http://localhost:8080/aluminium/sphere?dimension=1"
 
 These commands above must be followed in sequence, and the result should be achieved without any constraint.
 Here are some evidences:
+
+![kind-cluster](images/kind-cluster.png)
+
+![curl-results](images/curl_results.png)
+
+![kubectl-get-pods](images/pod_running.png)
